@@ -1,9 +1,13 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
+// Serve static files from the frontend folder
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 const getTasks = () => {
     const data = fs.readFileSync('./backend/tasks.json', 'utf8');

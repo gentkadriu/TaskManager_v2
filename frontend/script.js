@@ -23,11 +23,12 @@ taskForm.addEventListener('submit', async (e) => {
     const task = document.getElementById('taskInput').value;
 
     try {
-        await fetch('http://localhost:3000/backend/tasks', {
+        await fetch('http://localhost:3000/tasks', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: task })
         });
+        
         loadTasks(); // Reload the tasks list
         document.getElementById('taskInput').value = '';
     } catch (error) {
